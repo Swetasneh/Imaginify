@@ -1,5 +1,6 @@
 "use client";
 
+
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -56,6 +57,7 @@ export const Collection = ({
       {images.length > 0 ? (
         <ul className="collection-list">
           {images.map((image) => (
+            // @ts-ignore
             <Card image={image} key={image._id} />
           ))}
         </ul>
@@ -99,7 +101,9 @@ const Card = ({ image }: { image: IImage }) => {
   return (
     
     <li>
-      <Link href={`/transformations/${image._id}`} className="collection-card">
+      
+      <Link // @ts-ignore
+      href={`/transformations/${image._id}`} className="collection-card">
         <CldImage
           src={image.publicId}
           alt={image.title}
